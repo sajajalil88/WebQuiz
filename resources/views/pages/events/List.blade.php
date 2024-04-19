@@ -7,7 +7,7 @@
             <div class="col-sm-4 col-3">
                 <h4 class="page-title">Events</h4>
             </div>
-            @if(Auth::user()->getRoles->where('key',env('ADMIN'))->first() != null)
+            @if(Auth::user()->getRoles->where('key','A')->first() != null)
             <div class="col-sm-8 col-9 text-right m-b-20">
                 <a href="{{route('event.create')}}" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Event</a>
             </div>
@@ -20,7 +20,7 @@
                     <div class="event-img">
                         <a class="avatar" href=""><img alt="{{$data->name}} image" src="{{asset($data->image)}}"></a>
                     </div>
-                    @if(Auth::user()->getRoles->where('key',env('ADMIN'))->first() != null)
+                    @if(Auth::user()->getRoles->where('key','A')->first() != null)
                     <div class="dropdown profile-action">
                         <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -37,7 +37,7 @@
                         <i class="fa fa-ticket"></i> Available Tickets: {{$data->available_tickets}}
                     </div>
                     {{-- problem here --}}
-                    @if(Auth::user() && Auth::user()->getRoles->where('key', env('USER'))->first() != null)
+                    @if(Auth::user() && Auth::user()->getRoles->where('key', 'U'))->first() != null)
                     <div class="event-action">
                         <form method="POST" action="{{ route('events.reserve') }}">
                             @csrf
