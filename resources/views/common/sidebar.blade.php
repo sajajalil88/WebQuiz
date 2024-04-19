@@ -4,25 +4,31 @@
             <ul>
                 <li class="menu-title">Main</li>
                 @if(Auth::check() && Auth::user()->getRoles->where('key', env('ADMIN'))->first() != null)
-                <li>
-                    <a href="{{route('home')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
-                </li>
+                
                 @endif
 
-                <li>
+                {{-- <li>
                     <a href="{{route('doctor.index')}}"><i class="fa fa-user-md"></i> <span>Doctors</span></a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{route('event.index')}}"><i class="fa fa-user-md"></i> <span>Events</span></a>
                 </li>
 
-                 <li>
-                    <a href="{{route('appointment.index')}}"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
-                </li>
 
                 <li>
-                    <a href="{{route('schedule.index')}}"><i class="fa fa-calendar-check-o"></i> <span>Doctor Schedule</span></a>
+                    <a href="{{route('ticket.index')}}"><i class="fa fa-user-md"></i> <span>Ticket</span></a>
                 </li>
+                @if(Auth::check() && Auth::user()->getRoles->where('key', env('USER'))->first() != null)
+
+                <li>
+                    <a href="{{route('ticket.myTicket')}}"><i class="fa fa-user-md"></i> <span>My Tickets</span></a>
+                </li>
+                @endif
+
+                <li>
+                    <a href="{{route('ticket.search')}}"><i class="fa fa-user-md"></i> <span>Search Tickets</span></a>
+                </li>
+
 
                     </ul>
                 </li>

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Events extends Model
 {
     use HasFactory;
+    public function getTickets(){
+        return  $this->belongsToMany(Ticket::class,'event_ticket','event_id','ticket_id');
+    }
 }

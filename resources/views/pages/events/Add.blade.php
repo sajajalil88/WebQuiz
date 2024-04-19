@@ -10,55 +10,58 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <form method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('event.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>Event Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="text" name="name" value="{{old('name')}}" required>
-                                    @error('name')
+                                    <label>Event Title <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="text" name="title" value="{{old('title')}}" required>
+                                    @error('title')
                                             <div class="error-msg">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Start Date & Time <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="datetime-local" name="start_date_time" value="{{old('start_date_time')}}" required>
-                                    @error('start_date_time')
-                                            <div class="error-msg">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>End Date & Time <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="datetime-local" name="end_date_time" value="{{old('end_date_time')}}" required>
-                                    @error('end_date_time')
-                                            <div class="error-msg">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Available Tickets <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="number" name="available_tickets" value="{{old('available_tickets')}}" required>
-                                    @error('available_tickets')
-                                            <div class="error-msg">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
+                            
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>Description</label>
                                     <textarea class="form-control" name="description">{{old('description')}}</textarea>
                                     @error('description')
+                                            <div class="error-msg">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label> Date & Time <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="datetime-local" name="date_time" value="{{old('date_time')}}" required>
+                                    @error('date_time')
+                                            <div class="error-msg">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="profile_pic"><b>Profile Picture</b></label>
+                                    <input type="file" name="image" id="profile_pic">
+                                    @error('image')
+                                    <div class="alert alert-danger">{{$message}} </div>
+                                    @enderror
+                              
+                                </div>
+                            </div>
+
+                          
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Location</label>
+                                    <textarea class="form-control" name="location">{{old('location')}}</textarea>
+                                    @error('location')
                                             <div class="error-msg">{{ $message }}</div>
                                     @enderror
                                 </div>

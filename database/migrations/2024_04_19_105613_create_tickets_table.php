@@ -17,7 +17,9 @@ class CreateTicketsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id'); // Foreign key to users table
             $table->unsignedBigInteger('event_id'); // Foreign key to events table
-            $table->string('ticket_code')->unique(); // Unique ticket code
+            $table->string('serial_number')->unique(); // Unique ticket code
+            $table->string('price');
+            $table->string('status')->default('Active');
             $table->timestamps();
 
             // Define foreign key relationships

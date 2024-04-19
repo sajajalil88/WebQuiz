@@ -37,21 +37,24 @@ class EventsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|min:5|max:255',
+            'title' => 'required|string|min:5|max:255',
             'description' => 'nullable|string|max:500',
-            'start_date_time' => 'required|date',
-            'end_date_time' => 'required|date|after:start_date_time',
-            'available_tickets' => 'required|integer|min:0',
+            'date_time' => 'required|date',
+            'location' => 'required',
+            'image' => 'required|image|max:2048',
         ]);
 
         try {
             $event = new Events();
-            $event->name = $request->name;
+            $event->title = $request->title;
             $event->description = $request->description;
-            $event->start_date_time = $request->start_date_time;
-            $event->end_date_time = $request->end_date_time;
-            $event->available_tickets = $request->available_tickets;
+            $event->date_time = $request->date_time;
+            $event->location = $request->location;
 
+                // Handle file upload
+            $filename = time() . "-" . $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/myImages', $filename); // Store in 'storage/app/public/myImages'
+            $event->image = 'storage/myImages/' . $filename; // Adjust path
             $event->save();
 
         } catch (\Exception $e) {
@@ -59,7 +62,7 @@ class EventsController extends Controller
             return redirect()->back()->with('error', 'Error saving event. Please try again.');
         }
 
-        return redirect()->route('events.index')->with('success', 'Event added successfully.');
+        return redirect()->route('event.index')->with('success', 'Event added successfully.');
     }
 
     /**
@@ -92,19 +95,21 @@ class EventsController extends Controller
         }
 
         $request->validate([
-            'name' => 'required|string|min:5|max:255',
+            'title' => 'required|string|min:5|max:255',
             'description' => 'nullable|string|max:500',
-            'start_date_time' => 'required|date',
-            'end_date_time' => 'required|date|after:start_date_time',
-            'available_tickets' => 'required|integer|min:0',
+            'date_time' => 'required|date',
+            'location' => 'required',
+            'image' => 'required|image|max:2048',
         ]);
 
         try {
             $event->name = $request->name;
             $event->description = $request->description;
-            $event->start_date_time = $request->start_date_time;
-            $event->end_date_time = $request->end_date_time;
-            $event->available_tickets = $request->available_tickets;
+            $event->date_time = $request->start_date_time;
+            $event->location = $request->location;
+            $filename = time() . "-" . $request->file('image')->getClientOriginalName();
+            $request->file('img')->storeAs('public/myImages', $filename); // Store in 'storage/app/public/myImages'
+            $obj->image = 'storage/myImages/' . $filename; // Adjust path
 
             $event->save();
 
