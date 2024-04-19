@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventsController;
+
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\Auth\LoginController;
@@ -14,9 +16,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('doctor', DoctorController::class);
 Route::resource('schedule', ScheduleController::class);
-Route::resource('events', EventController::class);
-Route::get('events/create', [EventController::class, 'reserve'])->name('events.reserve');
+//Route::resource('events', EventController::class);
+//Route::get('events/create', [EventController::class, 'reserve'])->name('events.reserve');
+Route::resource('event', EventsController::class);
 
+Route::get('event-create', [EventsController::class, 'reserve'])->name('events.reserve');
 
 
 Route::get('/appointments/create', [DoctorAppointmentController::class, 'create'])->name('appointment.create');

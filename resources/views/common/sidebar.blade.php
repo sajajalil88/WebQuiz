@@ -13,7 +13,7 @@
                     <a href="{{route('doctor.index')}}"><i class="fa fa-user-md"></i> <span>Doctors</span></a>
                 </li>
                 <li>
-                    <a href="{{route('events.index')}}"><i class="fa fa-user-md"></i> <span>Events</span></a>
+                    <a href="{{route('event.index')}}"><i class="fa fa-user-md"></i> <span>Events</span></a>
                 </li>
 
                  <li>
@@ -23,7 +23,7 @@
                 <li>
                     <a href="{{route('schedule.index')}}"><i class="fa fa-calendar-check-o"></i> <span>Doctor Schedule</span></a>
                 </li>
-               
+
                     </ul>
                 </li>
             </ul>

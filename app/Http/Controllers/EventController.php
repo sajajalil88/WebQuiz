@@ -6,7 +6,7 @@ use App\Models\Events;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
-use App\Models\Ticket; 
+use App\Models\Ticket;
 
 
 class EventController extends Controller
@@ -28,7 +28,7 @@ class EventController extends Controller
     //     $ticket = new Ticket();
     //     $ticket->event_id = $eventId;
     //     $ticket->user_id = Auth::id();
-    //     $ticket->ticket_code = 'TICKET_' . str_random(8); 
+    //     $ticket->ticket_code = 'TICKET_' . str_random(8);
 
     //     Auth::user()->tickets()->save($ticket);
     //     $event->available_tickets -= 1;
@@ -39,13 +39,13 @@ class EventController extends Controller
     // } catch (\Exception $e) {
     //     return redirect()->route('events.index')->with('error', 'Error: ' . $e->getMessage());
     // }
-    return "hii";
+
 }
 
 
 public function index()
 {
-    $events = Events::all(); 
+    $events = Events::all();
 
     foreach ($events as $event) {
         $event->start_date_time = Carbon::parse($event->start_date_time);

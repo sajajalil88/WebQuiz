@@ -9,7 +9,7 @@
             </div>
             @if(Auth::user()->getRoles->where('key',env('ADMIN'))->first() != null)
             <div class="col-sm-8 col-9 text-right m-b-20">
-                <a href="{{route('events.create')}}" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Event</a>
+                <a href="{{route('event.create')}}" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Event</a>
             </div>
             @endif
         </div>
@@ -46,7 +46,7 @@
                         </form>
                     </div>
                     @endif
-                
+
                 </div>
                 <!-- Inside your event card div -->
 
