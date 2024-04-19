@@ -134,6 +134,7 @@ class EventsController extends Controller
 
     public function reserve(Request $request)
     {
+        return "reserve function";
          $eventId = $request->event_id;
          $event = Events::find($eventId);
 

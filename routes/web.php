@@ -16,8 +16,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('doctor', DoctorController::class);
 Route::resource('schedule', ScheduleController::class);
-//Route::resource('events', EventController::class);
-//Route::get('events/create', [EventController::class, 'reserve'])->name('events.reserve');
 Route::resource('event', EventsController::class);
 
 Route::get('event-create', [EventsController::class, 'reserve'])->name('events.reserve');
